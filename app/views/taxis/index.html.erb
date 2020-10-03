@@ -7,16 +7,21 @@
           <li>
             <%= link_to '詳細', taxi_path(taxi.id), method: :get %>
           </li>
+          <% if user_signed_in? && current_user.id == taxi.user_id %>
          <li>
             <%= link_to '編集', edit_taxi_path(taxi.id), method: :get %>
           </li>
           <li>
             <%= link_to '削除', taxi_path(taxi.id), method: :delete %>
           </li>
+          <% end %>
         </ul>
       </div>
       <p><%= taxi.text %></p>
       <span class="name">
+         <a href="/users/<%= taxi.user.id %>">
+          <span>投稿者</span><%= taxi.user.nickname %>
+        </a>
         <%= taxi.name %>
       </span>
     </div>
