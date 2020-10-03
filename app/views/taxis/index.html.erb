@@ -1,29 +1,5 @@
 <div class="contents row">
   <% @taxis.each do |taxi| %>
-    <div class="content_post" style="background-image: url(<%= taxi.image %>);">
-      <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-          <li>
-            <%= link_to '詳細', taxi_path(taxi.id), method: :get %>
-          </li>
-          <% if user_signed_in? && current_user.id == taxi.user_id %>
-         <li>
-            <%= link_to '編集', edit_taxi_path(taxi.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', taxi_path(taxi.id), method: :delete %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-      <p><%= taxi.text %></p>
-      <span class="name">
-         <a href="/users/<%= taxi.user.id %>">
-          <span>投稿者</span><%= taxi.user.nickname %>
-        </a>
-        <%= taxi.name %>
-      </span>
-    </div>
+ <%= render partial: "taxi-main", locals: { taxi: taxi } %>
   <% end %>
 </div>

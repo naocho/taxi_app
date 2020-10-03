@@ -30,7 +30,8 @@ class TaxisController < ApplicationController
   end
 
   def show
-    
+    @comment = Comment.new
+    @comments = @taxi.comments.includes(:user)
   end
 
   private
