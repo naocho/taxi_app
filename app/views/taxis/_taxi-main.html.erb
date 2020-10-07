@@ -1,0 +1,29 @@
+ <div class="content_post" >
+    <%= image_tag taxi.image,class: "item-img" %>
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to '詳細', taxi_path(taxi.id), method: :get %>
+          </li>
+          <% if user_signed_in? && current_user.id == taxi.user_id %>
+         <li>
+            <%= link_to '編集', edit_taxi_path(taxi.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', taxi_path(taxi.id), method: :delete %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <p><%= taxi.title %></p>
+      <span class="name">
+         <a href="/users/<%= taxi.user.id %>">
+         <div class="nickname_color">
+          <span>投稿者</span><%= taxi.user.nickname %>
+        </div>
+        </a>
+        <span>出発地</span><%=taxi.departure %>
+        <span>到着地</span><%= taxi.arrival %>
+      </span>
+    </div>

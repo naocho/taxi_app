@@ -1,6 +1,6 @@
 class TaxisController < ApplicationController
   before_action :set_taxi, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
 
   def index
     @taxis = Taxi.includes(:user).order("created_at DESC")
@@ -11,8 +11,14 @@ class TaxisController < ApplicationController
   end
 
   def create
-    Taxi.create(taxi_params)
+    @taxi = Taxi.new(taxi_params)
 
+    if @taxi.valid?
+      @taxi.save
+      redirect_to "/taxis"
+    else
+      render :new
+    end 
   end
 
   def destroy
@@ -30,13 +36,18 @@ class TaxisController < ApplicationController
   end
 
   def show
-    
+    @comment = Comment.new
+    @comments = @taxi.comments.includes(:user)
+  end
+
+  def search
+    @taxis = Taxi.search(params[:departure]).order("created_at DESC")
   end
 
   private
 
   def taxi_params
-    params.require(:taxi).permit(:name, :image, :text).merge(user_id: current_user.id)
+    params.require(:taxi).permit(:departure, :arrival, :image, :title, :text).merge(user_id: current_user.id)
   end
 
   def set_taxi

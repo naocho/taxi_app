@@ -1057,3 +1057,30 @@ footer p {
 .search-form .search-btn {
   width: 10%;
 }
+
+.item-img {
+  width: 50vh;
+  height: 35vh;
+}
+
+.content_post{
+  background-color:whitesmoke;
+}
+
+.more_list{
+  color: #000;
+}
+
+.nickname_color {
+  color: white;
+}
+
+.title{
+  color: white;
+}
+
+.rebu{
+  display: flex;
+  justify-content: center;
+  padding-top: 3vh;
+}

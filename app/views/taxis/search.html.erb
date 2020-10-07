@@ -1,12 +1,9 @@
-<div class="rebu">
-<h1 class="grid-6"><a href="/">タクシーのレシートを張ってレビューを書いて、割引を受けよう！！</a></h1>
-</div>
 <%= form_with(url: search_taxis_path, local: true, method: :get, class: "search-form") do |form| %>
   <%= form.text_field :departure, placeholder: "出発地を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
 <div class="contents row">
   <% @taxis.each do |taxi| %>
- <%= render partial: "taxi-main", locals: { taxi: taxi } %>
+    <%= render partial: "taxi-main", locals: { taxi: taxi } %>
   <% end %>
 </div>

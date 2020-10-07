@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @nickname = current_user.nickname
-    @taxis = current_user.taxis
+    user = User.find(params[:id])
+    @nickname = user.nickname
+    @taxis = user.taxis.order("created_at DESC")
   end
 end
