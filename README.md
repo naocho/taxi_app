@@ -1,24 +1,46 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                 | Type   | Options     |
+| ---------------------- | ------ | ----------- |
+| nickname               | string | null: false |
+| email                  | string | null: false |
+| encrypted_password     | string | null: false |
 
-* Ruby version
 
-* System dependencies
+##  has_many :taxis
+##  has_many :comments
 
-* Configuration
+## taxis テーブル
 
-* Database creation
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
+| departure    | string     | null: false                    |
+| arrival      | string     | null: false                    |
+| title        | string     | null: false                    |
+| text         | string     | null: false                    |
 
-* Database initialization
+## belongs_to :user
+## has_many :comments
+## has_one_attached :image
 
-* How to run the test suite
+## comments テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user_id      | bigint     | null: false, foreign_key: true |
+| taxi         | references | null: false, foreign_key: true |
+| text         | text       | null: false                    |
 
-* Deployment instructions
 
-* ...
+<!-- このアプリの作った経緯
+
+タクシーや運転代行はお客様のルートや時間により値段が変わる為
+正確な値段をお伝えする事が出来ない。
+また多少の値段ですら伝えた場合もし値段が違えば客とのトラブルになる
+その為、利用者のレビューを見てある程度の値段を判断してもらう事は
+良いのではと思いました。 -->
+
+

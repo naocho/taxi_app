@@ -41,13 +41,13 @@ class TaxisController < ApplicationController
   end
 
   def search
-    @taxis = Taxi.search(params[:keyword])
+    @taxis = Taxi.search(params[:departure]).order("created_at DESC")
   end
 
   private
 
   def taxi_params
-    params.require(:taxi).permit(:name, :image, :text).merge(user_id: current_user.id)
+    params.require(:taxi).permit(:departure, :arrival, :image, :title, :text).merge(user_id: current_user.id)
   end
 
   def set_taxi

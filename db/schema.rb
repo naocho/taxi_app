@@ -44,7 +44,9 @@ ActiveRecord::Schema.define(version: 2020_10_04_101101) do
 
   create_table "taxis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "name"
+    t.string "departure"
+    t.string "arrival"
+    t.string "title"
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,5 +1,6 @@
 <div class="contents row">
-  <div class="content_post" style="background-image: url(<%= @taxi.image %>);">
+  <div class="content_post">
+   <%= image_tag @taxi.image,class: "item-img" %>
     <% if user_signed_in? && current_user.id == @taxi.user_id %>
     <div class="more">
       <span><%= image_tag 'arrow_top.png' %></span>
@@ -13,12 +14,17 @@
       </ul>
     </div>
     <% end %>
-    <p><%= @taxi.text %></p>
+    <p><%= @taxi.title %></p>
    <span class="name">
       <a href="/users/<%= @taxi.user.id %>">
         <span>投稿者</span><%= @taxi.user.nickname %>
       </a>
     </span>
+  </div>
+  <div class="container">
+  <h4>＜出発場所＞</h4><%=@taxi.departure %>
+  <h4>＜到着場所＞</h4><%=@taxi.arrival %>
+  <h4>＜評価＞</h4><%=@taxi.text %>
   </div>
   <div class="container">
     <% if current_user %>
