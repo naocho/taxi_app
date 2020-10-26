@@ -1,0 +1,9 @@
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+.rebu{
+  font-size: 10px;
+}
+.search-btn{
+  color: green;
+}
+}
