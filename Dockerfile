@@ -6,15 +6,16 @@ RUN apt-get update -qq && \
                        nodejs           
 
 # 作業ディレクトリの作成
-RUN mkdir /app_name 
+# 多分ここのディレクトリの作成の記述が間違っている気がする。
+RUN taxi_app
 # Dockerfileをもとに生成したDockerコンテナ内で使える環境変数を指定
-ENV APP_ROOT /app_name
-WORKDIR $APP_ROOT
+ENV taxi_app
+WORKDIR $taxi_app
 
 # ホストからGemfileをコンテナ上にコピー
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
+ADD ./Gemfile $taxi_app/Gemfile
+ADD ./Gemfile.lock $taxi_app/Gemfile.lock
 
 # Gemfileをbundle install
 RUN bundle install
-ADD . $APP_ROOT
+ADD . $taxi_app

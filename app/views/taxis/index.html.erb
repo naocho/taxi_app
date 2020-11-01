@@ -1,7 +1,16 @@
-<div class="rebu">
-<h1 class="grid-6"><a href="/">タクシーのレシートを張ってレビューを書いて、割引を受けよう！！</a></h1>
+<div class="rebu" id="language-wrapper">
+<h1 class="grid-6" >タクシーのレシートを張ってレビューを書いて、割引を受けよう！！</h1>
+<ul class="testcolor">
+<li>どうかな？</li>
+<li>上手く行かない</li>
+</ul>
 </div>
-<div class="testcolor" id="test">ちゃんと表示が変わるかな</div>
+
+<%# <div class="testcolor"> %>
+ <%# <% @taxis.each do |images| %> 
+<%# <%= image_tag images.image,class:"item-img",id:"srid-item"%> 
+ <%# <% end %> 
+ <%# </div> %>
 <%= form_with(url: search_taxis_path, local: true, method: :get, class: "search-form") do |form| %>
   <%= form.text_field :departure, placeholder: "出発地を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
