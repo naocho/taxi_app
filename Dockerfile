@@ -9,7 +9,7 @@ RUN apt-get update -qq && \
 # 多分ここのディレクトリの作成の記述が間違っている気がする。
 RUN taxi_app
 # Dockerfileをもとに生成したDockerコンテナ内で使える環境変数を指定
-ENV taxi_app
+ENV projects /myapp
 WORKDIR $taxi_app
 
 # ホストからGemfileをコンテナ上にコピー

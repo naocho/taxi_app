@@ -1,29 +1,40 @@
- <div class="content_post" >
-    <%= image_tag taxi.image,class: "item-img" %>
-      <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-          <li>
-            <%= link_to '詳細', taxi_path(taxi.id), method: :get %>
-          </li>
+ <div class="toko-back" >
+    <%= image_tag taxi.image,class: "image-size" %>
+      <div class="toko-header">
+        <div class="font-center-title">
+        <p>--<%= taxi.title %>--</p>
+        </div>
+          <span class="name">
+            <a href="/users/<%= taxi.user.id %>">
+              <div class="user-color-show">
+                <span class="user-right">投稿者:</span><%= taxi.user.nickname %>
+              </div>
+                </a>
+               <div class="font-center">
+                <span>ポートフォリオURL</span>
+                </div>
+                <div class="font-center-color">
+                <%= link_to "掲載ページ",taxi.departure %>
+                </div>
+                <div class="font-center">
+                <span>一言コメント</span>
+                </div>
+                <div class="font-center-color">
+                <%= taxi.arrival %>
+                </div>
+          </span>
+        <ul class="font-center">
+        <div> 
+            <%= link_to '・詳細', taxi_path(taxi.id), method: :get %>
+        </div>
           <% if user_signed_in? && current_user.id == taxi.user_id %>
-         <li>
-            <%= link_to '編集', edit_taxi_path(taxi.id), method: :get %>
-          </li>
+          <div>
+            <%= link_to '・編集', edit_taxi_path(taxi.id), method: :get %>
+          </div>
           <li>
-            <%= link_to '削除', taxi_path(taxi.id), method: :delete %>
+            <%= link_to '・削除', taxi_path(taxi.id), method: :delete %>
           </li>
           <% end %>
         </ul>
-      </div>
-      <p><%= taxi.title %></p>
-      <span class="name">
-         <a href="/users/<%= taxi.user.id %>">
-         <div class="nickname_color">
-          <span>投稿者</span><%= taxi.user.nickname %>
-        </div>
-        </a>
-        <span>出発地</span><%=taxi.departure %>
-        <span>到着地</span><%= taxi.arrival %>
-      </span>
     </div>
+</div>

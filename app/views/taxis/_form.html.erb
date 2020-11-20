@@ -1,9 +1,11 @@
     <%= form_with(model: taxi, local: true) do |form| %>
       <%= render 'error_messages', model: form.object %>
-        <%= form.text_field :departure, placeholder: "出発地" %>
-        <%= form.text_field :arrival, placeholder: "到着地" %>
-        <%= form.file_field :image %>
         <%= form.text_field :title, placeholder: "タイトル" %>
-        <%= form.text_area :text, placeholder: "感想", rows: "10" %>
+        <%= form.text_field :departure, placeholder: "ポートフォリオURL" %>
+        <%= form.text_field :arrival, placeholder: "一言コメント" %>
+        <%= form.file_field :image %>
+        <%= form.text_area :text, placeholder: "詳細", rows: "10" %>
+        <div class="coment-center">
         <%= form.submit "投稿" %>
+        </div>
     <% end %>

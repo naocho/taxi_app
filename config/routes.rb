@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+    resources :profiles, only: :index
     resources :users, only: :show
 end

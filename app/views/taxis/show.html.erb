@@ -1,36 +1,57 @@
 <div class="contents row">
-  <div class="content_post">
-   <%= image_tag @taxi.image,class: "item-img" %>
-    <% if user_signed_in? && current_user.id == @taxi.user_id %>
-    <div class="more">
-      <span><%= image_tag 'arrow_top.png' %></span>
-      <ul class="more_list">
-        <li>
-          <%= link_to '編集', edit_taxi_path(@taxi.id), method: :get %>
-        </li>
-        <li>
-          <%= link_to '削除', taxi_path(@taxi.id), method: :delete %>
-        </li>
-      </ul>
+ <div class="toko-back" >
+   <%= image_tag @taxi.image,class: "image-size" %>
+      <div class="toko-header">
+        <div class="font-center-title">
+        <p>--<%= @taxi.title %>--</p>
+        </div>
+          <span class="name">
+            <a href="/users/<%= @taxi.user.id %>">
+              <div class="user-color">
+                <span class="user-right">投稿者:</span><%= @taxi.user.nickname %>
+                </div>
+                </a>
+          </span>
+        <ul class="font-center">
+        <div> 
+            <%= link_to '・詳細', taxi_path(@taxi.id), method: :get %>
+        </div>
+          <% if user_signed_in? && current_user.id == @taxi.user_id %>
+          <div>
+            <%= link_to '・編集', edit_taxi_path(@taxi.id), method: :get %>
+          </div>
+          <li>
+            <%= link_to '・削除', taxi_path(@taxi.id), method: :delete %>
+          </li>
+          <% end %>
+        </ul>
     </div>
-    <% end %>
-    <p><%= @taxi.title %></p>
-   <span class="name">
-      <a href="/users/<%= @taxi.user.id %>">
-        <span>投稿者</span><%= @taxi.user.nickname %>
-      </a>
-    </span>
-  </div>
+</div>
   <div class="container">
-  <h4>＜出発場所＞</h4><%=@taxi.departure %>
-  <h4>＜到着場所＞</h4><%=@taxi.arrival %>
-  <h4>＜評価＞</h4><%=@taxi.text %>
+      <div class="font-center-title">
+        <h4>＜ポートフォリオURL＞</h4>
+      </div>
+      <div class="font-center-title">
+        <%= link_to "掲載ページ",@taxi.departure %>
+      </div>
+      <div class="font-center-title">
+        <h4>＜一言コメント＞</h4>
+      </div>
+      <div class="font-center-title">
+        <%=@taxi.arrival %>
+      </div>
+      <div class="font-center-title">  
+        <h4>＜詳細＞</h4>
+      </div>
+      <div class="font-center-title">
+        <%=@taxi.text %>
+      </div>      
   </div>
   <div class="container">
     <% if current_user %>
       <%= form_with(model: [@taxi, @comment], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-        <%= form.submit "SEND" %>
+        <%= form.submit "コメント" %>
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>

@@ -41,7 +41,7 @@ class TaxisController < ApplicationController
   end
 
   def search
-    @taxis = Taxi.search(params[:departure]).order("created_at DESC")
+    @taxis = Taxi.search(params[:title]).order("created_at DESC")
   end
 
   private

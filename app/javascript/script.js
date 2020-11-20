@@ -1,21 +1,14 @@
 // app/javascript/script.js
 
 $(function() {
-  //$(function() {});この記述がページ全体を読み込む記述
-  $(".testcolor").css("color","green");
-})
-
-$(function() {
-  // 「#language-wrapper」にhoverしたときのhoverイベントを作成してください
-  $("#language-wrapper").hover(
-    function(){
-      $(".testcolor").fadeIn();
-    },
-    function(){
-      $(".testcolor").fadeOut();
-    }
-    );
-  
+  $('.font-log').slick({
+    autoplay: true,
+    autoplaySpeed: 2500,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear'
+});
 });
 
 // $(function(){

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>タク割</title>
+    <title>MY Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
    <%# <meta name="viewport" content="width=device-width, initial-scale=1.0" /> %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body>
       <header class="header">
       <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">タク割</a></h1>
+        <a href="/", class="prof"> MY Portfolio </a>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
             <span><%= current_user.nickname %>
@@ -24,17 +27,17 @@
                 </li>
               </ul>
             </span>
-            <%= link_to "投稿する", new_taxi_path, class: "post" %>
+            <%= link_to "投稿する", new_taxi_path, class: "prof-toko" %>
           </div>
         <% else %>
           <div class="grid-6">
-            <%= link_to "ログイン", new_user_session_path, class: "post" %>
-            <%= link_to "新規登録", new_user_registration_path, class: "post" %>
+            <%= link_to "ログイン", new_user_session_path, class: "prof-toko" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "prof-toko" %>
           </div>
         <% end %>
         </div>
       </div>
-    </header>
+    </header> 
     <%= yield %>
   </body>
 </html>

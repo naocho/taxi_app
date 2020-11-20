@@ -22,7 +22,6 @@ describe User, type: :model do
 
     context '新規登録がうまくいくとき' do
   
-      #エラーコードについては一度エラーを出してからexpected ["ここをincludeにかく"]
       it "ニックネームが必須であること" do
         @user.nickname = nil
         @user.valid?
@@ -38,7 +37,7 @@ describe User, type: :model do
       it "メールアドレスは@を含む必要がある" do
         @user.email = 'sample831gmail'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email @を含めてください")
+        expect(@user.errors.full_messages).to include("Email is invalid")
       end
 
       it "重複したemailが存在する場合登録できない" do
@@ -56,8 +55,8 @@ describe User, type: :model do
       end
 
       it "passwordが8文字以下であれば登録できない" do
-        @user.password = "abemaru831"
-        @user.password_confirmation = "abemaru831"
+        @user.password = "ab831"
+        @user.password_confirmation = "ab831"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
@@ -73,7 +72,7 @@ describe User, type: :model do
         @user.password = nil
         @user.password_confirmation = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password 半角英数字混合で6文字以上使用してください")
+        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
 
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
